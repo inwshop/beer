@@ -1,10 +1,10 @@
 const go = (name,abv) => {
     var url
     if (name != "" && abv != ""){
-        url = `https://api.punkapi.com/v2/beers?beer_name=${name}&abv=${abv}`;
+        url = `https://api.punkapi.com/v2/beers?beer_name=${name}&abv_gt=${abv}`;
     }
     else if (abv != "" && name == ""){
-        url = `https://api.punkapi.com/v2/beers?abv=${abv}`;
+        url = `https://api.punkapi.com/v2/beers?abv_gt=${abv}`;
     }
     else if (name != "" && abv == ""){
         url = `https://api.punkapi.com/v2/beers?beer_name=${name}`;
@@ -22,13 +22,10 @@ const go = (name,abv) => {
         let beers = response;
         let result = "";
         for (let i = 0; i < beers.length; i++) {
-            result += "<b>Name : </b>" + beers[i].name +
-                "<br> <b>Tagline : </b>" + beers[i].tagline +
-                "<br> <b>PH : </b>" + beers[i].ph +
-                "<br> <b>Yeast : </b>" + beers[i].ingredients.yeast +
-                "<br> <b>First Brewed : </b>" + beers[i].first_brewed +
-                "<br> <b>Description : </b>" + beers[i].description +
-                "<br>" + "<image src =" + beers[i].image_url + "/><hr>"
+            result += "<image src =" + beers[i].image_url + "/><hr>" +
+                "<br> <b>Name : </b>" + beers[i].name +
+                "<br> <b>Alcohol by volume : </b>" + beers[i].abv +
+                "<br> <b>Description : </b>" + beers[i].description
         }
         document.getElementById('result').innerHTML = result
     })
