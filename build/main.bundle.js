@@ -21,7 +21,7 @@ var go = function go(name, abv) {
         var beers = response;
         var result = "";
         for (var i = 0; i < beers.length; i++) {
-            result += "<image src =" + beers[i].image_url + "/><hr>" + "<br> <b>Name : </b>" + beers[i].name + "<br> <b>Alcohol by volume : </b>" + beers[i].abv + "<br> <b>Description : </b>" + beers[i].description;
+            result += "<image src =" + beers[i].image_url + "/>" + "<br> <b>Name : </b>" + beers[i].name + "<br> <b>Alcohol by volume : </b>" + beers[i].abv + "<br> <b>Description : </b>" + beers[i].description + "<hr>";
         }
         document.getElementById('result').innerHTML = result;
     });

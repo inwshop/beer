@@ -22,10 +22,12 @@ const go = (name,abv) => {
         let beers = response;
         let result = "";
         for (let i = 0; i < beers.length; i++) {
-            result += "<image src =" + beers[i].image_url + "/><hr>" +
+            result += "<image src =" + beers[i].image_url + "/>" +
                 "<br> <b>Name : </b>" + beers[i].name +
                 "<br> <b>Alcohol by volume : </b>" + beers[i].abv +
-                "<br> <b>Description : </b>" + beers[i].description
+                "<br> <b>Description : </b>" + beers[i].description +
+
+                "<hr>"
         }
         document.getElementById('result').innerHTML = result
     })
