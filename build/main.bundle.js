@@ -1,10 +1,22 @@
 "use strict";
 
-var getBeerAPIByName = function getBeerAPIByName(name) {
-    return fetch("https://api.punkapi.com/v2/beers/?beer_name=" + name).then(function (response) {
+var go = function go(name, abv) {
+    var url;
+    if (name != "" && abv != "") {
+        url = "https://api.punkapi.com/v2/beers?beer_name=" + name + "&abv=" + abv;
+    } else if (abv != "" && name == "") {
+        url = "https://api.punkapi.com/v2/beers?abv=" + abv;
+    } else if (name != "" && abv == "") {
+        url = "https://api.punkapi.com/v2/beers?beer_name=" + name;
+    } else {
+        var result = "No result";
+        document.getElementById('result').innerHTML = result;
+    }
+
+    fetch(url).then(function (response) {
         return response.json();
     }).catch(function (e) {
-        return console.err('Fail');
+        return console.err('Noooooooooo');
     }).then(function (response) {
         var beers = response;
         var result = "";
